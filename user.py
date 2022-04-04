@@ -8,6 +8,8 @@ class User:
         self.balance = balance
     def withdrawal(self, amount):
         self.balance -= amount
+    def deposit(self, amount):
+        self.balance += amount
     def display_user_balance(self):
         print(f"User: {self.name}, Balance: {self.balance}")
     def transfer_money(self, user, amount):
@@ -16,9 +18,27 @@ class User:
 
 myself = User("Michael", 100)
 someone_else = User("Nick", 200)
-myself.withdrawal(50)
+someone_new = User("Gary", 5)
+
+myself.deposit(50)
+myself.deposit(20)
+myself.deposit(10)
+myself.withdrawal(80)
 myself.display_user_balance()
-myself.transfer_money(someone_else, 20)
-myself.display_user_balance()
+
+someone_else.deposit(100)
+someone_else.deposit(20)
+someone_else.withdrawal(40)
+someone_else.withdrawal(50)
 someone_else.display_user_balance()
+
+someone_new.deposit(1000)
+someone_new.withdrawal(40)
+someone_new.withdrawal(40)
+someone_new.withdrawal(40)
+someone_new.display_user_balance()
+
+myself.transfer_money(someone_new, 20)
+myself.display_user_balance()
+someone_new.display_user_balance()
 
